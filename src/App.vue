@@ -2,8 +2,7 @@
   <div class="app">
     <HeaderComponent />
     <div class="content">
-      <ProductItem />
-      <ProductItem />
+      <NewProduct @add-product="addProduct" />
       <ProductItem />
     </div>
   </div>
@@ -13,13 +12,47 @@
 //import HelloWorld from './components/HelloWorld.vue'
 import ProductItem from './components/ProductItem.vue';
 import HeaderComponent from './components/HeaderComponent.vue';
+import NewProduct from './components/NewProduct.vue';
 
 export default {
   name: 'App',
   components: {
     ProductItem,
-    HeaderComponent
-  }
+    HeaderComponent,
+    NewProduct
+},
+  data() {
+    return {
+      products: [
+        {
+          name: "Product 1",
+          description: "Product 1 description"
+        },
+        {
+          name: "Product 2",
+          description: "Product 2 description"
+        },
+        {
+          name: "Product 3",
+          description: "Product 3 description"
+        }
+      ]
+    }
+  },
+  methods: {
+    addProduct(product) {
+      // alert("Hello from App.vue: " + productName)
+      console.log(product)
+      this.products.push(product)
+      console.log(this.products.length)
+    }
+  },
+  //Using provide
+  provide() {
+    return {
+      products: this.products,
+    }
+  },
 }
 </script>
 

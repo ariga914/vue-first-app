@@ -1,23 +1,35 @@
 <template>
-    <li class="product-item">
+    <ul>
+        <li v-for="(product, index) in products" :key="index" class="product-item">
         <h2>{{ product.name }}</h2>
         <p>{{ product.description }}</p>
     </li>
+    </ul>
 </template>
 
 <script>
 export default {
     // property i to define component name
     name: 'ProductItem',
-    data() {
-        return {
-            product: {
-                id: '1',
-                name: 'Product 1',
-                description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-            }
-        }
-    }
+    //props: {
+        //name: {
+            //type: String,
+            //required: true
+        //},
+        //description: {
+            //type: String
+        //}
+    //},
+    //data() {
+        //return {
+            //product: {
+                //id: '1',
+                //name: 'Product 1',
+                //description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+            //}
+        //}
+    //}
+    inject: ["products"],
 }
 </script>
 
